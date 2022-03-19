@@ -6,30 +6,26 @@ using namespace std;
 // @solution-sync:begin
 class Solution {
 public:
-    int minArray(vector<int>& numbers) {
-            // binarySearch
-            //
-            //
-            int low=0,hig=numbers.size()-1;
+    int minArray(vector<int> &numbers) {
+        // binarySearch
+        //
+        //
+        int low = 0, hig = numbers.size() - 1;
 
-        while (low<=hig){
-            int mid=low+(hig-low)/2;
+        while (low <= hig) {
+            int mid = low + (hig - low) / 2;
 
-            if(numbers[mid]>numbers[hig]){
+            if (numbers[mid] > numbers[hig]) {
                 // low is right
-                low=mid+1;
-            }else if (numbers[mid]<numbers[hig]){
-                hig=mid;
-            }else{
+                low = mid + 1;
+            } else if (numbers[mid] < numbers[hig]) {
+                hig = mid;
+            } else {
+                // numbers[mid]==numbers[hig]
                 hig--;
             }
-
         }
-        cout << low<<endl;
         return numbers[low];
-
-
-
     }
 };
 // @solution-sync:end
