@@ -1,4 +1,0 @@
-/usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/ninja -G Ninja /home/yjs/CPP/LC/offer/22
--- Configuring done
--- Generating done
--- Build files have been written to: /home/yjs/CPP/LC/offer/22/cmake-build-debug

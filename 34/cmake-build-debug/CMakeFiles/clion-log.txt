@@ -1,7 +1,0 @@
-/opt/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/ninja -G Ninja /home/yjs/CPP/LC/34
--- Configuring done
-CMake Error at CMakeLists.txt:8 (add_executable):
-  No SOURCES given to target: lca-play
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.

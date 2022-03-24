@@ -1,3 +1,0 @@
-/home/yjs/CPP/LC/2006/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/yjs/CPP/LC/2006/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/yjs/CPP/LC/2006/cmake-build-debug/CMakeFiles/2006.dir
