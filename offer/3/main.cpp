@@ -18,7 +18,6 @@ public:
            countMap[nums[i]]= true;
         }
         return -1;
-
     }
 };
 
