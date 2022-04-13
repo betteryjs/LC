@@ -41,8 +41,9 @@ public:
 };
 
 
-// 带备忘录的递归
+// 带备忘录的递归 time O(k*n) 目标金额为 n，给定的硬币个数为 k
 class Solution2 {
+
 private:
     vector<int> coins;
     vector<int> memo;
@@ -56,6 +57,7 @@ public:
 
     // 定义：要凑出金额 n，至少要 dp(coins, n) 个硬币
     int dp(int amount) {
+
         // base case
         if(amount==0) return 0;
         if(amount<0) return -1;
@@ -86,10 +88,33 @@ public:
 
 
 
+// dp
+class Solution3 {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount + 1, amount + 1);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; ++i) {
+            for(const int & coin : coins) {
+                if (coin <= i) {
+                    dp[i] = min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+};
+
+
+
+
+
+
+
 
 
 int main(){
-    Solution2 go;
+    Solution3 go;
     vector<int> cons{1,2,5};
     cout << go.coinChange(cons,11)<<endl;
 
