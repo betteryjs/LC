@@ -14,13 +14,13 @@ struct ListNode {
 
 // 递归
 class Solution {
+
 private:
     ListNode *nextCur = nullptr; // 后驱节点
 public:
+
     ListNode *reverseBetween(ListNode *head, int left, int right) {
         if (left == 1) {
-
-
             return reverseN(head, right);
         }
         head->next = reverseBetween(head->next, left - 1, right - 1);
@@ -40,8 +40,6 @@ public:
         head->next->next = head;
         head->next = nextCur;
         return last;
-
-
     }
 };
 
@@ -50,7 +48,8 @@ public:
 class Solution2 {
 
 private:
-    ListNode *reverseLinkedList1(ListNode *head) {
+     //  迭代
+    ListNode* reverseLinkedList1(ListNode *head) {
 
         ListNode *prev = nullptr;
         ListNode *cur = head;
@@ -62,8 +61,8 @@ private:
         }
         return prev;
     }
-
-    ListNode *reverseLinkedList2(ListNode *head) {
+    //  递归
+    ListNode* reverseLinkedList2(ListNode *head) {
 
         if (head == nullptr || head->next == nullptr) {
             return head;
