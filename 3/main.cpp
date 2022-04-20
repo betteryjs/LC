@@ -1,30 +1,48 @@
 #include <iostream>
-#include <vector>
-#include <array>
-#include <algorithm>
+#include <bits/stdc++.h>
+
 
 using namespace std;
 
+
 class Solution {
 public:
-    int findRepeatNumber(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        for_each(nums.begin(), nums.end(),[](int & a){cout << a<<" ";});
-        cout<<endl;
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> need,window;
+        for(const char &c:s){
 
-       vector<int>::iterator res=unique(nums.begin(), nums.end());
-//       return copy(res,res+1,ans);
-        for (auto a = res; a!=nums.end() ; ++a) {
-            cout<< (*a)<< " ";
+            need[c]++;
         }
+        int left=0,right=0;
+        int res=0;
+        while (right<s.size()){
+            char d=s[right];
+            right++;
+            window[d]++;
+            while (window[d]>1){
+                char c=s[left];
+                left++;
+                window[c]--;
+
+
+            }
+            res=max(res,right-left);
+
+
+
+        }
+        return res;
+
+
 
 
 
     }
 };
+
+
+
 int main() {
-    Solution go;
-    vector<int>num{3, 4, 2, 0, 0, 1};
-    go.findRepeatNumber(num);
+
     return 0;
 }

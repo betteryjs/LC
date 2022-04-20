@@ -4,4 +4,4 @@ project(StudyTest)
 
 
 
-add_subdirectory(动态规划 bin)
+add_subdirectory(KMP bin)
