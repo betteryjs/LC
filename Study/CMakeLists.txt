@@ -4,4 +4,4 @@ project(StudyTest)
 
 
 
-add_subdirectory(KMP bin)
+add_subdirectory(搜索 bin)

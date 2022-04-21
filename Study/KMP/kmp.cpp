@@ -13,6 +13,7 @@ private:
     string  pat;
     vector<int> next;
 public:
+
     KMP(const string & pat):pat(pat){
         // init next
         int j=0,k=-1;
@@ -74,7 +75,6 @@ int main(){
     cout <<pos<<endl;
 
 
-//cout << res;
 
     return 0;
 }
