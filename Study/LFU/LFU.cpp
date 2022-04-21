@@ -1,6 +1,11 @@
 //
 // Created by yjs on 2022/4/21.
 //
+#include <bits/stdc++.h>
+
+
+using namespace std;
+
 
 class LFUCache {
 public:
