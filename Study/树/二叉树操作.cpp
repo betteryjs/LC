@@ -20,10 +20,14 @@ struct TreeNode {
 
 
 class DoTree {
+
+
 private:
+
     void visit(TreeNode *node) {
         cout << node->val << " ";
     }
+    vector<int> res;
 
 public:
 
@@ -57,7 +61,128 @@ public:
         }
     }
 
-    // 层次遍历
+    // 非递归先序遍历二叉树 [根 左 右]
+    // https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/
+    void preOrderTter(TreeNode *root) {
+        if(root== nullptr){
+            return;
+        }
+        stack<TreeNode * >stackToken;
+        while (root!= nullptr || !stackToken.empty()){
+
+            // 从节点开始依次访问
+            while (root!= nullptr){
+                stackToken.push(root);
+                visit(root);
+                root=root->left;
+            }
+
+            TreeNode* cur=stackToken.top();
+            root=cur->right;
+
+
+        }
+
+
+    }
+
+//    void preOrderTter2(TreeNode *root) {
+//        if(root== nullptr){
+//            return;
+//        }
+//        stack<TreeNode * >stackToken;
+//        while (!stackToken.empty()){
+//            TreeNode* node=stackToken.top();
+//            stackToken.pop();
+//            visit(node);
+//
+//
+//            if (node->right != nullptr) {
+//                stackToken.push(node->right);
+//            }
+//            if (node->left != nullptr) {
+//                stackToken.push(node->left);
+//            }
+//
+//
+//
+//        }
+//
+//
+//    }
+
+
+    vector<int> inorderTraversal(TreeNode* root) {
+
+        stack<TreeNode * >stackToken;
+        while (!stackToken.empty() || root!= nullptr){
+            while (root!= nullptr){
+                stackToken.push(root);
+                root=root->left;
+            }
+
+            root =stackToken.top();
+            stackToken.pop();
+            res.push_back(root->val);
+            root=root->right;
+
+        }
+        return res;
+
+
+
+
+
+
+    }
+
+
+
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (root == nullptr) {
+            return res;
+        }
+
+        stack<TreeNode * >stackToken;
+        TreeNode *prev = nullptr;
+
+        while (!stackToken.empty() || root!= nullptr){
+
+            while (root!= nullptr){
+
+                stackToken.push(root);
+                root=root->left;
+            }
+
+            root=stackToken.top();
+            stackToken.pop();
+            if(root->right== nullptr || root->right==prev){
+                res.push_back(root->val);
+                prev=root;
+                root= nullptr;
+            }else{
+
+            }
+
+
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+        // 层次遍历
     void levelTraverse(TreeNode *root) {
         if (root == nullptr) {
             return;
