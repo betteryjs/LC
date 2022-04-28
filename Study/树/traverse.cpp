@@ -72,6 +72,8 @@ public:
         // 后序位置
 //        print(head->val);
     }
+
+
     // 定义：输入一棵二叉树，返回这棵二叉树的节点总数
     int count(TreeNode*  root) {
         if (root == nullptr) {
@@ -87,30 +89,7 @@ public:
     }
 
 
-    // 输入一棵二叉树的根节点，层序遍历这棵二叉树
-    void levelTraverse(TreeNode* root) {
 
-        if (root == nullptr) return;
-        queue<TreeNode* > queueTree;
-        queueTree.push(root);
-
-        // 从上到下遍历二叉树的每一层
-        while (!queueTree.empty()) {
-            int sz = queueTree.size();
-            // 从左到右遍历每一层的每个节点
-            for (int i = 0; i < sz; i++) {
-                TreeNode* cur = queueTree.front();
-                queueTree.pop();
-                // 将下一层节点放入队列
-                if (cur->left != nullptr) {
-                    queueTree.push(cur->left);
-                }
-                if (cur->right != nullptr) {
-                    queueTree.push(cur->right);
-                }
-            }
-        }
-    }
 
 
 
