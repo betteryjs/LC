@@ -14,6 +14,7 @@ struct TreeNode {
 };
 
 class Solution {
+    // 从前序与中序遍历序列构造二叉树
     // preorder [根 左 右]
     // inorder [左 根 右]
 private:
@@ -27,8 +28,8 @@ public:
         this->preorder = preorder;
         this->inorder = inorder;
         // 构造哈希映射，帮助我们快速定位根节点
-        int n = preorder.size();
-        for (int i = 0; i < preorder.size(); ++i) {
+        int n = inorder.size();
+        for (int i = 0; i < inorder.size(); ++i) {
             index[inorder[i]] = i;
         }
         return buildTreeHelper(0, n - 1, 0, n - 1);
@@ -45,6 +46,8 @@ public:
         TreeNode *root = new TreeNode(preorder[preStart]);
         int inRoot = index[root->val]; // [左 根 右]
         int numsLeft = inRoot - inStart;
+        // preorder [根 左 右]
+        // inorder [左 根 右]
         root->left = buildTreeHelper(preStart + 1, preStart + numsLeft, inStart, inRoot - 1);
         root->right = buildTreeHelper(preStart + numsLeft + 1, preEnd, inRoot + 1, inEnd);
         return root;

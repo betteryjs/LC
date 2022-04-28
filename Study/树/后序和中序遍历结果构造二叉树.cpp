@@ -14,7 +14,7 @@ struct TreeNode {
 };
 
 class Solution {
-
+    // 后序和中序遍历结果构造二叉树
     // inorder [左 根 右]
     // postorder [左 右 根]
 private:
@@ -38,7 +38,6 @@ public:
     TreeNode *buildTreeHelper(const int &inStart, const int &inEnd, const int &postStart, const int &postEnd) {
 
         if (inStart > inEnd || postStart > postEnd) {
-
             return nullptr;
         }
 
