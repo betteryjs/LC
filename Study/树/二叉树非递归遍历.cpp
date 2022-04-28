@@ -108,4 +108,39 @@ public:
     }
 
 
+    // 层序遍历
+    vector<vector<int>> levelOrder(TreeNode *root) {
+        vector<vector<int>> res;
+        if (root == nullptr) {
+            return res;
+        }
+
+        queue<TreeNode *> queueTreeNodes;
+        queueTreeNodes.push(root);
+        while (!queueTreeNodes.empty()) {
+
+            int sz = queueTreeNodes.size();
+            vector<int> cens;
+            for (int i = 0; i < sz; ++i) {
+                TreeNode *node = queueTreeNodes.front();
+                queueTreeNodes.pop();
+                cens.push_back(node->val);
+                if (node->left != nullptr) {
+                    queueTreeNodes.push(node->left);
+                }
+                if (node->right != nullptr) {
+                    queueTreeNodes.push(node->right);
+                }
+
+            }
+            res.push_back(cens);
+
+
+        }
+        return res;
+
+
+    }
+
+
 };
