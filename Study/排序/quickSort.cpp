@@ -24,9 +24,9 @@ public:
         swap(nums[left],nums[left+rand()%(right-left)]);
         int x = nums[left];
         while (i < j) {
-             while (nums[++i] < x);
-             while (nums[--j] > x);
-            if (i < j) swap(nums[i], nums[j]);
+             while (nums[++i] < x); // 找到第一个大于等于x的元素
+             while (nums[--j] > x); //  找到第一个小于等于x的元素
+             if (i < j) swap(nums[i], nums[j]);
         }
         quickSort(nums,left,j);
         quickSort(nums,j+1,right);
