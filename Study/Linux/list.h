@@ -126,6 +126,13 @@ static inline int list_empty(const struct list_head *head)
 	return head->next == head;
 }
 
+
+// 将第一个链表合并到第二个链表上 然后第一个链表的头作为首节点
+// list1 3 - 2 - 1 - 0
+// list2 7 - 6 - 5 - 4
+// list1 3 - 2 - 1 - 0 - 7 - 6 - 5 - 4
+
+
 static inline void __list_splice(struct list_head *list,
 								 struct list_head *head)
 {
@@ -173,6 +180,11 @@ static inline void list_splice_init(struct list_head *list,
  * @type:	the type of the struct this is embedded in.
  * @member:	the name of the list_struct within the struct.
  */
+
+// ((type *)0) ANSI C标准允许值为0的常量被强制转换成任何一种类型的指针，
+// 并且转换的结果是 NULL，因此((type *)0)的结果就是一个类型为type *的NULL指针
+// (char *)(ptr) 计算字节偏移
+
 #define list_entry(ptr, type, member) \
 	((type *)((char *)(ptr)-(unsigned long)(&((type *)0)->member)))
 

@@ -3,6 +3,7 @@
 //
 #include "list.h"
 #include <bits/stdc++.h>
+#include <stddef.h>
 
 
 
@@ -99,12 +100,12 @@ int main(){
 
     }
     cout <<endl;
-//    struct Task *task_pos;
-//    list_for_each_entry(task_pos, &task.entry_list, entry_list)
-//    {
-//        cout << task_pos->val <<" ";
-//
-//    }
+    struct Task *task_pos;
+    list_for_each_entry(task_pos, &task.entry_list, entry_list)
+    {
+        cout << task_pos->val <<" ";
+
+    }
 //    cout <<endl;
 //    list_for_each_entry(task_pos, &task.entry_list, entry_list)
 //    {
