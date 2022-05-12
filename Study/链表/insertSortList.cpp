@@ -20,6 +20,8 @@ public:
                     prev = prev->next;
                 }
                 lastSorted->next = curr->next;
+                
+                // 将cur插入到 prev 后
                 curr->next = prev->next;
                 prev->next = curr;
             }
