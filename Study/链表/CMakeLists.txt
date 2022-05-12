@@ -1,3 +1,5 @@
-add_executable(sqlist sqlist.cpp)
-add_executable(linklist linklist.cpp)
-add_executable(dlinklist dlinklist.cpp)
+#add_executable(sqlist sqlist.cpp)
+#add_executable(linklist linklist.cpp)
+#add_executable(dlinklist dlinklist.cpp)
+add_executable(fastSlowNodeFindmin fastSlowNodeFindmin.cpp)
+add_executable(margeSortList2 margeSortList2.cpp)

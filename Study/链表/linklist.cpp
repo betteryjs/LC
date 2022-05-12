@@ -15,8 +15,10 @@ namespace LinklistTest1 {
     typedef int ElemType;
 
     struct LinkListNode {
+
         ElemType data;
         LinkListNode *next;
+
     };
 
     typedef LinkListNode *LinkList;
@@ -41,8 +43,7 @@ namespace LinklistTest1 {
 
 
     LinkListNode *GetElem2(LinkList head, int i) {
-
-        if (i < 0) {
+        if(i<0){
             return nullptr;
         }
         if (i == 0) {
@@ -57,6 +58,7 @@ namespace LinklistTest1 {
     }
 
 
+
     bool InitList(LinkList &L) {
 
         L = (LinkListNode *) malloc(sizeof(LinkListNode));
@@ -67,8 +69,11 @@ namespace LinklistTest1 {
         return true;
     }
 
+    // 在第i个位置插入元素e
+
     // 在p节点之后插入元素e
     bool InsertNextNode(LinkListNode *p, const ElemType &e) {
+
         if (p == nullptr) {
             return false;
         }
@@ -80,6 +85,8 @@ namespace LinklistTest1 {
         s->next = p->next;
         p->next = s;
         return true;
+
+
     }
 
 
@@ -87,7 +94,6 @@ namespace LinklistTest1 {
     bool InsertPriorNode(LinkListNode *p, const ElemType &e) {
 
         if (p == nullptr) {
-
             return false;
 
         }
@@ -177,46 +183,48 @@ namespace LinklistTest1 {
     }
 
 
-    void PrintLinkList(LinkList head) {
-        LinkListNode *cur = head->next;
-        while (cur) {
-            cout << cur->data << " ";
-            cur = cur->next;
+    void PrintLinkList(LinkList head){
+        LinkListNode* cur=head->next;
+        while (cur){
+            cout << cur->data<<" ";
+            cur=cur->next;
 
 
         }
-        cout << endl;
+        cout<< endl;
 
     }
 
 
-    LinkListNode *ListTailInsert(LinkList &head, const vector<int> &nums) {
-        LinkListNode *pos1 = head;
-        for (const int &num: nums) {
-            LinklistTest1::InsertNextNode(pos1, num);
-            pos1 = pos1->next;
-        }
-        return head;
-    }
-
-
-    LinkListNode *ListHeadInsert(LinkList &head, const vector<int> &nums) {
-        for (const int &num: nums) {
-            LinkListNode *s = (LinkListNode *) malloc(sizeof(LinkListNode));
-            s->data = num;
-            s->next = head->next;
-            head->next = s;
+    LinkListNode* ListTailInsert(LinkList&  head,const vector<int> & nums){
+        LinkListNode * pos1=head;
+        for (const int  & num:nums) {
+            LinklistTest1::InsertNextNode(pos1,num);
+            pos1=pos1->next;
         }
         return head;
     }
 
 
-    int GetLength(LinkList head) {
-        int length = 0;
-        LinkListNode *cur = head;
-        while (cur->next != nullptr) {
+
+    LinkListNode* ListHeadInsert(LinkList&  head,const vector<int> & nums){
+        for (const int  & num:nums) {
+            LinkListNode * s=(LinkListNode*) malloc(sizeof(LinkListNode));
+            s->data=num;
+            s->next=head->next;
+            head->next=s;
+        }
+        return head;
+    }
+
+
+
+    int GetLength(LinkList head){
+        int length=0;
+        LinkListNode *cur=head;
+        while (cur->next!= nullptr){
             length++;
-            cur = cur->next;
+            cur=cur->next;
         }
         return length;
 
@@ -224,10 +232,11 @@ namespace LinklistTest1 {
     }
 
 
-    LinkListNode *LocateElem(LinkList head, const ElemType &e) {
-        LinkListNode *cur = head->next;
-        while (cur != nullptr && cur->data != e) {
-            cur = cur->next;
+
+    LinkListNode* LocateElem(LinkList head,const ElemType & e){
+        LinkListNode * cur=head->next;
+        while (cur!= nullptr && cur->data!=e){
+            cur=cur->next;
 
         }
         return cur;
@@ -310,16 +319,19 @@ namespace LinklistTest2 {
 int main() {
     LinklistTest1::LinkList head;
     LinklistTest1::InitList(head);
-    vector<int> nums{1, 3, 6, 8, 9};
+    vector<int> nums{1,3,6,8,9};
 //    LinklistTest1::ListTailInsert(head,nums);
-    LinklistTest1::ListHeadInsert(head, nums);
+    LinklistTest1::ListHeadInsert(head,nums);
     LinklistTest1::PrintLinkList(head);
-    cout << LinklistTest1::GetElem2(head, 2)->data << endl;
-    LinklistTest1::InsertPriorNode(LinklistTest1::GetElem2(head, 2), 66);
+    cout << LinklistTest1::GetElem2(head,2)->data<<endl;
+    LinklistTest1::InsertPriorNode(LinklistTest1::GetElem2(head,2),66);
 
     LinklistTest1::PrintLinkList(head);
 
-    cout << GetLength(head) << endl;
+    cout << GetLength(head)<<endl;
+
+
+
 
 
     return 0;

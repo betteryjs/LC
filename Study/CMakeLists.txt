@@ -4,4 +4,4 @@ project(StudyTest)
 
 
 
-add_subdirectory(Linux bin)
+add_subdirectory(/home/yjs/CPP/LC/Study/链表 bin)
