@@ -62,19 +62,12 @@ public:
         if(n==1){
             nextCur=head->next;
             return head;
-
         }
         // 以 head.next 为起点，需要反转前 n - 1 个节点
         ListNode * last= reverseN(head->next,n-1);
         head->next->next=head;
         head->next=nextCur;
         return last;
-
-
-
-
-
-
     }
 };
 
@@ -85,37 +78,26 @@ class Solution4 {
 private:
     ListNode* nextCur= nullptr; // 后驱节点
 public:
+// [m,n] 索引从1开始
     ListNode *reverseBetween(ListNode *head,int m,int n) {
         if(m==1){
-
 
             return reverseN(head,n);
         }
         head->next= reverseBetween(head->next,m-1,n-1);
         return head;
-
-
-
-
     }
 
     ListNode * reverseN(ListNode* head, int n){
         if(n==1){
             nextCur=head->next;
             return head;
-
         }
         // 以 head.next 为起点，需要反转前 n - 1 个节点
         ListNode * last= reverseN(head->next,n-1);
         head->next->next=head;
         head->next=nextCur;
         return last;
-
-
-
-
-
-
     }
 };
 
