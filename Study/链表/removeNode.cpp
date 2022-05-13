@@ -1,7 +1,3 @@
-//
-// Created by yjs on 2022/5/13.
-//
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -24,27 +20,50 @@ public:
     ListNode *removeElements(ListNode *head, int val) {
         ListNode *dummyHead = new ListNode(-1);
         dummyHead->next = head;
-        ListNode * cur=dummyHead;
-        while (cur->next!= nullptr){
+        ListNode *cur = dummyHead;
+        while (cur->next != nullptr) {
 
-            if(cur->next->val==val){
+            if (cur->next->val == val) {
 
-                cur->next=cur->next->next;
+                cur->next = cur->next->next;
 
-            }else{
-                cur=cur->next;
+            } else {
+                cur = cur->next;
             }
 
         }
         return dummyHead->next;
 
 
+    }
+};
 
 
+
+// 递归
+
+class Solution2 {
+public:
+
+
+    ListNode *removeElements(ListNode *head, int val) {
+        if (head == nullptr) {
+            return nullptr;
+        }
+
+        head->next = removeElements(head->next, val);
+        if (head->val == val) {
+            return head->next;
+        } else {
+            return head;
+        }
 
 
     }
+
+
 };
+
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
