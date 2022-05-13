@@ -35,9 +35,16 @@ public:
             slow=slow->next;
         }
         return slow;
+    }
 
+    ListNode * findMid2(ListNode * head){
+        ListNode * fast= head->next,* slow=head;
+        while (fast != nullptr && fast->next != nullptr){
 
-
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow;
     }
 
 
@@ -121,12 +128,15 @@ public:
 
 
 int main() {
-    vector<int> nums{1, 25, 26, 23};
+    vector<int> nums{1, 25, 26, 23,17};
     BuildList  buildList(nums);
     FastSlowNode* fastSlowNode=new FastSlowNode();
     ListNode * res=fastSlowNode->findMid(buildList.getHead());
+    ListNode * res2=fastSlowNode->findMid2(buildList.getHead());
+    buildList.PrintLinkList(buildList.getHead());
 
     cout << res->val<<endl;
+    cout << res2->val<<endl;
 
 
 

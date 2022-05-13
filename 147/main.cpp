@@ -1,6 +1,5 @@
-// 方法一：自顶向下归并排序
-
 #include <bits/stdc++.h>
+
 
 using namespace std;
 
@@ -14,6 +13,37 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
 
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode *insertionSortList(ListNode *head) {
+
+        if (head == nullptr) {
+            return head;
+        }
+        ListNode *dummyHead = new ListNode(-1);
+        dummyHead->next = head;
+        ListNode *lastSorted = head;
+        ListNode *cur = head->next;
+        while (cur != nullptr) {
+
+            if (lastSorted->val <= cur->val) {
+                lastSorted = lastSorted->next;
+            } else {
+                ListNode *prev = dummyHead;
+                while (prev->next->val <= cur->val) {
+                    prev = prev->next;
+                }
+                lastSorted->next = cur->next;
+                // 将cur插入到 prev 后
+                cur->next = prev->next;
+                prev->next = cur;
+            }
+            cur = lastSorted->next;
+        }
+        return dummyHead->next;
+    }
 };
 
 
@@ -84,73 +114,6 @@ public:
 };
 
 
-class Solution {
-
-
-public:
-    ListNode *sortList(ListNode *head) {
-
-        if (head == nullptr || head->next == nullptr) {
-            return head;
-        }
-
-//        ListNode *fast = head->next, *slow = head;
-        ListNode *fast = head, *slow = head;
-
-        // fast slow node find the list middle node
-
-        while (fast != nullptr && fast->next != nullptr) {
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-
-
-        ListNode *tmp = slow->next;
-        slow->next = nullptr;
-
-        ListNode *left = sortList(head);
-        ListNode *right = sortList(tmp);
-
-        ListNode *dummyHead = new ListNode(-1);
-        ListNode *cur = dummyHead;
-        while (left != nullptr && right != nullptr) {
-            if (left->val <= right->val) {
-                cur->next = left;
-                left = left->next;
-
-
-            } else {
-
-                cur->next = right;
-                right = right->next;
-
-            }
-
-            cur = cur->next;
-
-
-        }
-
-        cur->next = left != nullptr ? left : right;
-        return dummyHead->next;
-
-
-    }
-
-
-};
-
-
-
-
-
-//  方法二：自底向上归并排序
-
-
-
-
-
-
 int main() {
     vector<int> nums{1, 325, 36, 17, 25, 56};
 
@@ -158,11 +121,8 @@ int main() {
     ListNode *head = buildlist.getHead();
     buildlist.PrintLinkList(head);
     Solution *solution = new Solution;
-    ListNode *NewHead = solution->sortList(head);
+    ListNode *NewHead = solution->insertionSortList(head);
 
     buildlist.PrintLinkList(head);
-
     return 0;
-
-
 }
