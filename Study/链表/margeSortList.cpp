@@ -29,6 +29,7 @@ public:
             head->next = nullptr;
             return head;
         }
+        
         ListNode* slow = head, *fast = head;
         while (fast != tail) {
             slow = slow->next;
@@ -38,6 +39,8 @@ public:
             }
         }
         ListNode* mid = slow;
+        
+        
         return merge(sortList(head, mid), sortList(mid, tail));
     }
 

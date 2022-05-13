@@ -41,6 +41,9 @@ public:
         }
         while (i <= mid) tmp[k++] = nums[i++];
         while (j <= right) tmp[k++] = nums[j++];
+        
+        
+         // 将tmp 复制到原数组中 
 
         for (k = 0, i = left; i <= right; k++, i++) nums[i] = tmp[k];
 
