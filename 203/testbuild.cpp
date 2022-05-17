@@ -1,6 +1,15 @@
+//
+// Created by yjs on 2022/5/13.
+//
+
+//
+// Created by yjs on 2022/5/13.
+//
+
 #include <bits/stdc++.h>
 
 using namespace std;
+
 
 struct ListNode {
     int val;
@@ -14,10 +23,11 @@ struct ListNode {
 };
 
 
-class BuildList {
+
+
+class BuildListNoPoint {
 
 private:
-
 
     vector<int> nums;
 
@@ -35,13 +45,17 @@ private:
         return true;
     }
 
-    ListNode *head = new ListNode(-1);
+    ListNode *head = nullptr;
 
 
 public:
 
-    BuildList(const vector<int> &nums) : nums(nums) {
+    BuildListNoPoint(const vector<int> &nums) : nums(nums) {
+        if(nums.size()>=1){
+            this->head=new ListNode(nums[0]);
+        }
         ListNode *cur = this->head;
+
 
         ListTailInsert(cur, nums);
 
@@ -50,16 +64,20 @@ public:
 
     ListNode *ListTailInsert(ListNode *head, const vector<int> &nums) {
         ListNode *pos1 = head;
-        for (const int &num: nums) {
-            InsertNextNode(pos1, num);
+        for (int i = 1; i < nums.size(); ++i) {
+            InsertNextNode(pos1, nums[i]);
             pos1 = pos1->next;
+
         }
+
+
+
         return head;
     }
 
 
     void PrintLinkList(ListNode *head) {
-        ListNode *cur = head->next;
+        ListNode *cur = head;
         while (cur) {
             cout << cur->val << " ";
             cur = cur->next;
@@ -81,45 +99,14 @@ public:
 };
 
 
-class Solution {
-
-private:
-
-    ListNode *findKNode(ListNode *head, int k) {
-        ListNode *fast = head;
-        while (k--) {
-            fast = fast->next;
-        }
-        ListNode *slow = head;
-        while (fast != nullptr) {
-            slow = slow->next;
-            fast = fast->next;
-        }
-        return slow;
-
-
-    }
-
-
-public:
-    ListNode *rotateRight(ListNode *head, int k) {
-
-
-    }
-
-};
-
-
 int main() {
-//    vector<int> nums{1, 2, 3, 4, 5};
-//
-//    BuildList buildlist(nums);
-//    ListNode *head = buildlist.getHead();
-//    buildlist.PrintLinkList(head);
-//    Solution2 *solution = new Solution2;
-//    ListNode *NewHead = solution->rotateRight(head,2);
-//
-//    buildlist.PrintLinkList(NewHead);
 
-    return 0;
+    vector<int> nums{1,36,24};
+
+    BuildListNoPoint buildlist(nums);
+    ListNode *head = buildlist.getHead();
+
+    buildlist.PrintLinkList(head);
+    cout << head->val<<endl;
+
 }

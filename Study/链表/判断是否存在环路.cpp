@@ -1,3 +1,7 @@
+//
+// Created by yjs on 2022/5/14.
+//
+
 #include <iostream>
 
 using namespace std;
@@ -44,43 +48,4 @@ public:
 
 
 
-ListNode *parseListNode(const vector<int> &values) {
-    auto *dum = new ListNode(0);
-    ListNode *cur = dum;
-    for (int v: values) {
-        auto *tmp = new ListNode(v);
-        cur->next = tmp;
-        cur = cur->next;
-    }
-    ListNode *res = dum->next;
-    delete dum;
-    return res;
-}
 
-#include <sstream>
-
-string toString(ListNode *h) {
-    stringstream out;
-    out << "[";
-    ListNode *c = h;
-    while (c) {
-        out << c->val;
-        if (c->next)
-            out << ",";
-        c = c->next;
-    }
-    out << "]";
-    return out.str();
-}
-
-int main() {
-    ListNode *head = parseListNode(vector<int>{3, 2, 0, -4});
-    ListNode * cur=head;
-    cur->next->next=cur->next;
-
-    auto solution = Solution();
-    auto result = solution.detectCycle(head);
-    cout << toString(result) << endl;
-
-    return 0;
-}
