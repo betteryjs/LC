@@ -3,7 +3,7 @@
 // Copyright (c) Kim Yang All rights reserved.
 //
 
-//链式队列（带头节点版本）
+//链式队列（不带头节点版本）
 
 #include <stdio.h>
 #include <stdlib.h>
