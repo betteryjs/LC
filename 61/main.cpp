@@ -83,29 +83,53 @@ public:
 
 class Solution {
 
-private:
-
-    ListNode *findKNode(ListNode *head, int k) {
-        ListNode *fast = head;
-        while (k--) {
-            fast = fast->next;
-        }
-        ListNode *slow = head;
-        while (fast != nullptr) {
-            slow = slow->next;
-            fast = fast->next;
-        }
-        return slow;
-
-
-    }
 
 
 public:
     ListNode *rotateRight(ListNode *head, int k) {
 
+        if(k==0 || head== nullptr || head->next== nullptr){
+            return head;
+        }
+
+       int n=1;
+        ListNode * tail=head;
+        while (tail->next!= nullptr){
+            tail=tail->next;
+            n++;
+        }
+//        for(ListNode* p = head; p ; p = p->next){
+//            tail = p;
+//            n++;
+//        }
+
+
+        k %= n;
+        ListNode* p = head;
+        // [0 n-k-2] n-k-1 个元素
+        for(int i = 0; i < n - k - 1; i++)   p = p->next;  //找到链表的第n-k个节点
+        tail->next=head;
+        head=p->next;
+        p->next= nullptr;
+        return head;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
+
+
 
 };
 
