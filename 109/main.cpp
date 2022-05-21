@@ -48,14 +48,5 @@ public:
         root->left=buildTree(left,mid);
         root->right=buildTree(mid->next,right);
         return root;
-
-
-
-
     }
-
-
-
-
-
 };
