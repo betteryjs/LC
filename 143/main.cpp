@@ -92,10 +92,7 @@ public:
 
 
 class Solution2 {
-
 private:
-
-
     ListNode * getMid(ListNode * head){
         if(head== nullptr  || head->next== nullptr){
             return head;
@@ -107,8 +104,6 @@ private:
         }
         return slow;
     }
-
-
     ListNode * reverse(ListNode * head){
         if(head== nullptr || head->next== nullptr){
             return head;
@@ -122,11 +117,7 @@ private:
             cur=nextCur;
         }
         return prev;
-
-
     }
-
-
     ListNode * margeList(ListNode * l1,ListNode*  l2){
         ListNode* tmpl1;
         ListNode* tmpl2;
@@ -137,12 +128,7 @@ private:
             l1=tmpl1;
             l2->next=l1;
             l2=tmpl2;
-
-
-
         }
-
-
         return l1;
     }
 
