@@ -91,6 +91,77 @@ public:
 };
 
 
+class Solution2 {
+
+private:
+
+
+    ListNode * getMid(ListNode * head){
+        if(head== nullptr  || head->next== nullptr){
+            return head;
+        }
+        ListNode * fast=head,* slow=head;
+        while (fast!= nullptr && fast->next!= nullptr){
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow;
+    }
+
+
+    ListNode * reverse(ListNode * head){
+        if(head== nullptr || head->next== nullptr){
+            return head;
+        }
+        ListNode * prev= nullptr;
+        ListNode * cur=head;
+        while (cur!= nullptr){
+            ListNode * nextCur=cur->next;
+            cur->next=prev;
+            prev=cur;
+            cur=nextCur;
+        }
+        return prev;
+
+
+    }
+
+
+    ListNode * margeList(ListNode * l1,ListNode*  l2){
+        ListNode* tmpl1;
+        ListNode* tmpl2;
+        while (l1!= nullptr && l2!= nullptr){
+            tmpl1=l1->next;
+            tmpl2=l2->next;
+            l1->next=l2;
+            l1=tmpl1;
+            l2->next=l1;
+            l2=tmpl2;
+
+
+
+        }
+
+
+        return l1;
+    }
+
+public:
+    void reorderList(ListNode *head) {
+        if(head== nullptr || head->next== nullptr){
+            return;
+        }
+        ListNode * mid= getMid(head);
+        ListNode * l2=mid->next;
+        ListNode * l1=head;
+        mid->next= nullptr;
+        l2= reverse(l2);
+        margeList(l1,l2);
+    }
+};
+
+
+
 int main() {
     std::cout << "Hello, World!" << std::endl;
     return 0;
