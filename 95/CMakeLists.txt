@@ -4,3 +4,5 @@ project(95)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(95 main.cpp)
+
+add_executable(unionFind unionFind.cpp)
