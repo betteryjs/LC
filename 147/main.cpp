@@ -44,7 +44,7 @@ public:
         }
         return dummyHead->next;
     }
-};
+};e
 
 
 class BuildList {

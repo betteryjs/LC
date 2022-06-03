@@ -32,7 +32,6 @@ public:
         if (root == nullptr) {
             return res;
         }
-
         stack<TreeNode *> stk;
         TreeNode *node = root;
         while (!stk.empty() || node != nullptr) {

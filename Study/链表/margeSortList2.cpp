@@ -169,9 +169,11 @@ public:
         if (head == nullptr || head->next == nullptr) {
             return head;
         }
-
-//        ListNode *fast = head->next, *slow = head;
-        ListNode *fast = head, *slow = head;
+// 要让fast 多走一步或两步
+        // fast和slow同一起点的话，对于节点数为偶数的链表，返回的是中间两个节点的第二个，无法正确拆分偶数链表。例如，
+        // 一个链表只有1,2两个节点，如果用上述代码，返回的中间节点是节点2，无法拆分。为了返回正确，需要让fast先走一步或两步
+       ListNode *fast = head->next, *slow = head;
+        // ListNode *fast = head, *slow = head;
 
         // fast slow node find the list middle node
 

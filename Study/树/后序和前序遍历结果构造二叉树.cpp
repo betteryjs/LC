@@ -62,14 +62,7 @@ public:
         TreeNode * root = new TreeNode(rootVal);
         root->left= buildTreeHelper(preStart+1,preStart+leftSize,postStart,indexLeftRoot);
         root->right= buildTreeHelper(preStart+leftSize+1,preEnd,indexLeftRoot+1,postEnd-1);
-
         return root;
-
-
-
-
-
-
 
     }
 };

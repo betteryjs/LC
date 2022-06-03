@@ -21,14 +21,12 @@ struct ListNode {
 class Solution {
 public:
     struct cmp{
-
         bool operator()(const ListNode* n1,ListNode* n2){
             return n1->val>n2->val;
         }
     };
 
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-
         ListNode* dummy = new ListNode(-1);
         ListNode* cur = dummy;
         // 优先级队列，最小堆
@@ -39,7 +37,6 @@ public:
             if(list!= nullptr){
                 priorityQueue.push(list);
             }
-
 
         }
         while (!priorityQueue.empty()){
@@ -56,23 +53,8 @@ public:
 
             }
             cur=cur->next;
-
-
-
-
-
-
-        }
+         }
         return dummy->next;
-
-
-
-
-
-
-
-
-
     }
 };
 
