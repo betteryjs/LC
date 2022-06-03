@@ -33,8 +33,9 @@ public:
             for (auto &thebuckett: buckets) {
                 for (int &k: thebuckett) {
                     arr[index++] = k;
-                    thebuckett.clear();
+
                 }
+                                    thebuckett.clear();
             }
         }
     }

@@ -70,21 +70,15 @@ public:
         }
         stack<TreeNode *> stackToken;
         while (root != nullptr || !stackToken.empty()) {
-
             // 从节点开始依次访问
             while (root != nullptr) {
                 stackToken.push(root);
                 visit(root);
                 root = root->left;
             }
-
             TreeNode *cur = stackToken.top();
             root = cur->right;
-
-
         }
-
-
     }
 
 //    void preOrderTter2(TreeNode *root) {

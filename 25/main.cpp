@@ -28,7 +28,6 @@ private:
         return prev;
     }
 
-
 public:
     ListNode *reverseKGroup(ListNode *head, int k) {
         if (head == nullptr) {
@@ -48,7 +47,6 @@ public:
         // 递归反转后续链表并连接起来
         a->next = reverseKGroup(b, k);
         return newHead;
-
 
     }
 };

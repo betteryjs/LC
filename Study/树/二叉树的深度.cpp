@@ -53,8 +53,6 @@ public:
                     queue.push(node->right);
                 }
                 sz--;
-
-
             }
             ans++;
 
