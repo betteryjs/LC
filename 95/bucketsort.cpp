@@ -16,7 +16,7 @@ public:
 
         vector<int>::value_type maxx = *max_element(arr.begin(), arr.end());
         vector<int>::value_type minx = *min_element(arr.begin(), arr.end());
-        const double bucket_size=(maxx-minx+1)/(bucket_count-1);
+        const  double bucket_size=(double ) (maxx-minx+1)/(bucket_count);
 
         // 初始化空桶
 
@@ -25,7 +25,7 @@ public:
 
         for (int i = 0; i < arr.size(); ++i) {
 //            cout << arr[i] << " to "<< floor((arr[i]-minx)/bucket_size)<< endl;
-            bucket[(arr[i]-minx)/bucket_size].push_back(arr[i]);
+            bucket[floor((arr[i]-minx)/bucket_size)].push_back(arr[i]);
         }
         int index = 0;
         for (int i = 0; i < bucket_count; ++i) {
