@@ -46,6 +46,52 @@ public:
 };
 
 
+// DFS
+class Solution2 {
+private:
+
+    vector<vector<int>> adjancecy; // 邻接链表
+
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        adjancecy.resize(numCourses,vector<int>());
+        vector<int> indegrees(numCourses);
+        vector<int> flags(numCourses);
+        for (const vector<int> & cp :prerequisites) {
+            indegrees[cp[0]]++; // 入度+1
+            adjancecy[cp[1]].push_back(cp[0]);
+        }
+        for (int i = 0; i < numCourses; ++i) {
+            if(!dfs(flags,i)) return false;
+
+        }
+        return true;
+
+
+
+    }
+
+    bool dfs(vector<int> & flags,int i){
+        if(flags[i]==1) return false; // 在这次DFS中节点已经被访问过
+        if(flags[i]==-1) return true; // 节点已经被DFS访问过
+        flags[i]=1;
+
+        for (const int & num: adjancecy[i]) {
+            if(!dfs(flags,num)) return false;
+
+        }
+
+
+        flags[i]=-1;
+        return true;
+
+
+    }
+
+};
+
+
+
 int main() {
     std::cout << "Hello, World!" << std::endl;
     return 0;
