@@ -14,8 +14,6 @@ private:
     vector<int> parents;
     int unionCount = 0; // 合并次数
 
-
-
 public:
 
 
@@ -25,7 +23,6 @@ public:
         // init
         for (int i = 0; i < capitalSize; ++i) {
             parents[i] = i;
-
         }
 
 
@@ -33,7 +30,8 @@ public:
 
 
     int find(int target) {
-        if (parents[target] < 0) return target;
+        // 路径压缩
+        if (parents[target] ==target) return target;
         return parents[target] = find(parents[target]);
     }
 
@@ -47,16 +45,12 @@ public:
         int findX = find(x);
         int findY = find(y);
         if (findX != findY) {
-
             parents[findY] = findX;
             unionCount++;
             return true;
         }
         return false;
-
     }
-
-
 };
 
 
@@ -67,28 +61,20 @@ private:
     int unionCount = 0; // 合并次数
     vector<int> rank; //  保存树的大小
 
-
-
-
 public:
 
-
     WeightedQuickUnionUF(int capitalSize) {
-
         parents.resize(capitalSize);
         // init
         for (int i = 0; i < capitalSize; ++i) {
             parents[i] = i;
             rank[i] = 1;
-
         }
-
-
     }
 
 
     int find(int target) {
-        if (parents[target] < 0) return target;
+        if (parents[target] == target) return target;
         return parents[target] = find(parents[target]);
     }
 
