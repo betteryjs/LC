@@ -62,6 +62,7 @@ public:
             adjancecy[cp[1]].push_back(cp[0]);
         }
         for (int i = 0; i < numCourses; ++i) {
+            // 判断每个起步的节点是否有环
             if(!dfs(flags,i)) return false;
 
         }
