@@ -13,3 +13,5 @@ add_executable(heap215 heap215.cpp)
 add_executable(heapsort heapsort.cpp)
 
 add_executable(215_ 215_.cpp)
+add_executable(quick_215 quick_215.cpp)
+add_executable(setPartation setPartation.cpp)
