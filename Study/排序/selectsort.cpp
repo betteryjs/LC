@@ -26,10 +26,12 @@ public:
         for (int i = 0; i < arr.size(); ++i) {
             int min=i;
             for (int j = i+1; j < arr.size(); ++j) {
-                if(arr[j]>arr[min]){
-                    swap(arr[j],arr[min]);
+                if(arr[j]<arr[min]){
+                    min=j;
                 }
             }
+            swap(arr[i],arr[min]);
+
 
         }
 
@@ -52,11 +54,12 @@ public:
 int main() {
 
     vector<int> nums4{2, 3, 56, 89, 26, 65, 19, 16, 23};
-
     SelectSort selectSort;
     SelectSort::pprint("in", nums4);
     selectSort.selectSort(nums4);
     SelectSort::pprint("out", nums4);
+
+
 
 
 
