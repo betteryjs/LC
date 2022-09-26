@@ -28,6 +28,21 @@ public:
         }
     }
 
+    void maxHeapify2(vector<int>& a, int i, int heapSize) {
+        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+        if (l <= heapSize && a[l] > a[largest]) {
+            largest = l;
+        }
+        if (r <= heapSize && a[r] > a[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(a[i], a[largest]);
+            maxHeapify2(a, largest, heapSize);
+        }
+    }
+
+
 
 
 

@@ -8,55 +8,37 @@ using namespace std;
 // @solution-sync:begin
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
-        // select sort k
-        heap_sort(nums,nums.size());
-        return nums[nums.size()-k];
-
-
-
-
-    }
-
-
-
-
-    void maxHeapify(vector<int> &arr, int i, int heapSize) {
-        int leftChild=2*i, rightChild=2*i+1, target;
-        if(leftChild< heapSize  && arr[leftChild]>arr[i] )  target=leftChild;
-        if(rightChild< heapSize  && arr[rightChild]>arr[i] )  target=rightChild;
-        if(target!=i){
-            swap(arr[i], arr[target]);
-            maxHeapify(arr, target,heapSize);
-
+    void maxHeapify(vector<int>& a, int i, int heapSize) {
+        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+        if (l <= heapSize && a[l] > a[largest]) {
+            largest = l;
         }
-
-
-
-    }
-
-
-
-
-
-
-// create heap
-    void build_heap(vector<int> &arr, int size) {
-        // father node is i
-        // left child node is 2*i+1
-        // right child node is 2*i+2
-        for (int i =  size/2; i >= 0; i--) {
-            maxHeapify(arr, i, size);
+        if (r <= heapSize && a[r] > a[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(a[i], a[largest]);
+            maxHeapify(a, largest, heapSize);
         }
     }
 
-    void heap_sort(vector<int> &arr, int size) {
-        build_heap(arr, size);
-        for (int j = size - 1; j > 0; j--) {
-            swap(arr[j], arr[0]);
-            maxHeapify(arr, 0, j);
+    void buildMaxHeap(vector<int>& a, int heapSize) {
+        for (int i = heapSize / 2; i >= 0; --i) {
+            maxHeapify(a, i, heapSize);
         }
     }
+
+    void heap_sort(vector<int>& arr) {
+        int len = arr.size()-1;
+        buildMaxHeap(arr, len);
+        for (int i = len ; i >=1; i--) {
+            swap(arr[i], arr[0]);
+            len--;
+            maxHeapify(arr, 0, len);
+        }
+    }
+
+
 
 
 };
@@ -69,12 +51,13 @@ public:
 
 
 int main() {
-    vector<int> nums = {3, 2, 1, 5, 6, 4};
-    int k = 2;
+    vector<int> nums = {3, 2, 1, 5, 6, 4, 16 , 15 };
 
     auto solution = Solution();
-    auto result = solution.findKthLargest(nums, k);
-    cout << result << endl;
+    solution.heap_sort(nums);
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
 
     return 0;
 }

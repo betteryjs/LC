@@ -32,12 +32,12 @@ public:
     void maxHeapify(vector<int> &arr, int i, int heapSize) {
         while (2*i+1<=heapSize){
             int leftChild=(2*i)+1,rightChild=(2*i)+2,target=leftChild;
-            if(rightChild <=heapSize && arr[rightChild]< arr[leftChild]){
+            if(rightChild <=heapSize && arr[rightChild]> arr[leftChild]){
                 target=rightChild;
             }
 
 
-            if(arr[target] < arr[i]){
+            if(arr[target] > arr[i]){
                 swap(arr[target],arr[i]);
 
             }else{
@@ -50,10 +50,24 @@ public:
         }
 
 
-
-
-
     }
+
+    void maxHeapify2(vector<int>& a, int i, int heapSize) {
+        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+        if (l <= heapSize && a[l] > a[largest]) {
+            largest = l;
+        }
+        if (r <= heapSize && a[r] > a[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(a[i], a[largest]);
+            maxHeapify2(a, largest, heapSize);
+        }
+    }
+
+
+
 
 
 
@@ -62,7 +76,7 @@ public:
 
     void build_heap(vector<int> &arr, int size) {
         for (int i =  size/2; i >= 0; i--) {
-            maxHeapify(arr, i, size);
+            maxHeapify2(arr, i, size);
         }
     }
 
@@ -72,7 +86,7 @@ public:
         for (int i = len ; i >=1; i--) {
             swap(arr[i], arr[0]);
             len--;
-            maxHeapify(arr, 0, len);
+            maxHeapify2(arr, 0, len);
         }
     }
 
@@ -84,7 +98,6 @@ public:
 
     void comparator(vector<int> &arr) {
         sort(arr.begin(), arr.end());
-        std::reverse(arr.begin(), arr.end());
 
     }
 
