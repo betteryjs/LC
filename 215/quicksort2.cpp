@@ -35,9 +35,6 @@ public:
             arr[low]=arr[high];
             while (low < high && arr[low] <= pivot) low++;
             arr[high]=arr[low];
-
-
-
         }
         arr[low]=pivot;
         return low;
@@ -47,12 +44,6 @@ public:
     int randomPartition(vector<int> &arr, int low, int high) {
         swap(arr[low], arr[low + rand() % (high - low)]);
         return Partition(arr, low, high);
-
-
-
-
-
-
     }
 
 
